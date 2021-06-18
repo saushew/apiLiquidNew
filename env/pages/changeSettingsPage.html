@@ -1,0 +1,95 @@
+{{define "head"}}
+<script src="/static/fetchData.js"></script>
+<script src="/static/changeSettings.js"></script>
+{{end}}
+
+{{define "title"}}
+Change Settings
+{{end}}
+
+{{define "body"}}
+<div class="center">
+    <div class="ui card">
+        <form class="ui form" id="Form" onsubmit="event.preventDefault(); changeSettings();">
+            <div class="field">
+                <label>stop or run(true for stop)</label>
+                <input type="text" name="stop" placeholder="true or false">
+            </div>
+            <div class="field">
+                <label>period</label>
+                <input type="text" name="period" placeholder="int value of minutes">
+            </div>
+            <div class="field">
+                <label>pair</label>
+                <input type="text" name="pair" placeholder="BTC_COIN">
+            </div>
+            <div class="field">
+                <label>enable or disable(true for enable)</label>
+                <input type="text" name="enabledPair" placeholder="true or false">
+            </div>
+            <div class="field">
+                <label>volumeToTradePerDayMax</label>
+                <input type="text" name="volumeToTradePerDayMax" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>volumeToTradePerDayMin</label>
+                <input type="text" name="volumeToTradePerDayMin" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>modifyMinRightBalance</label>
+                <input type="text" name="modifyMinRightBalance" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>modifyMinBTCBalance</label>
+                <input type="text" name="modifyMinBTCBalance" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>modifyVolumeToTradePerDayMax</label>
+                <input type="text" name="modifyVolumeToTradePerDayMax" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>modifyVolumeToTradePerDayMin</label>
+                <input type="text" name="modifyVolumeToTradePerDayMin" placeholder="float number">
+            </div>
+
+            <div class="field">
+                <label>buyBeforeSell</label>
+                <input type="text" name="buyBeforeSell" placeholder="float number">
+            </div>
+
+
+            <div class="field">
+                <label>Mindif</label>
+                <input type="text" name="mindif" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>priceShiftEdge</label>
+                <input type="text" name="priceShiftEdge" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>priceShiftMaxOnceAmount</label>
+                <input type="text" name="priceShiftMaxOnceAmount" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>priceShiftMaxAmountToTrade</label>
+                <input type="text" name="priceShiftMaxAmountToTrade" placeholder="float number">
+            </div>
+            <button class="ui primary button" type="submit" id="submitButton">
+                Change Settings
+            </button>
+            <div class="ui pointing red basic label" id="failed" style="display: none">
+                Failed
+            </div>
+            <div class="ui pointing green basic label" id="success" style="display: none">
+                Successful
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{{end}}
+{{define "scripts"}}
+<script type="text/javascript">
+</script>
+{{end}}

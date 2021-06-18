@@ -1,0 +1,79 @@
+{{define "head"}}
+{{ end }}
+
+{{define "title"}}
+Orders History
+{{ end }}
+
+{{define "body"}}
+<div class="center">
+  <span>
+    <div
+      id="time-place"
+      class="ui sub header"
+      style="padding-bottom: 30px;"
+    ></div>
+    <div class="center" style="padding-bottom: 50px;">
+      <span>
+        <a
+          class="ui primary button"
+          href="/changeSettings"
+          style="padding-bottom: 30px;"
+        >
+          Change settings
+        </a>
+      </span>
+      <span>
+        <a
+          class="ui primary button"
+          href="/changeSettingsSpreadFill"
+          style="padding-bottom: 30px;"
+        >
+          Change SpreadFill
+        </a>
+      </span>
+      <span>
+        <a class="ui primary button" href="/info" style="padding-bottom: 30px;">
+          info
+        </a>
+      </span>
+      <span>
+        <a
+          class="ui primary button"
+          href="/buySellBot"
+          style="padding-bottom: 30px;"
+        >
+          buySellBot
+        </a>
+      </span>
+      <span>
+        <a
+          class="ui primary button"
+          href="#"
+          onclick="localStorage.setItem('auth', ''); document.location.href = '';"
+          style="padding-bottom: 30px;"
+        >
+          Log out
+        </a>
+      </span>
+    </div>
+  </span>
+  <span id="investorsInfoPlace"> </span>
+</div>
+<!-- <canvas id="plotCanvas" style="border:1px solid #000000;">
+        Your browser does not support the canvas element.
+    </canvas> -->
+<div class="table-wrap">
+  <table id="exchanges" class="inverted ui celled table">
+    <thead>
+      <tr></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+{{ end }}
+{{define "scripts"}}
+<script src="/static/fetchData.js"></script>
+<script src="/static/mainscript.js"></script>
+<script type="text/javascript"></script>
+{{ end }}

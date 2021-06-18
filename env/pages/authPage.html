@@ -1,0 +1,36 @@
+{{define "head"}}
+<script src="/static/auth.js"></script>
+{{end}}
+
+{{define "title"}}
+Auth page
+{{end}}
+
+{{define "body"}}
+<div class="center">
+    <div class="ui card">
+        <form class="ui form" id="authform" onsubmit="event.preventDefault(); auth();">
+            <div class="field">
+                <label>User</label>
+                <input type="text" name="user" placeholder="user">
+            </div>
+            <div class="field">
+                <label>password</label>
+                <input type="password" name="password" placeholder="password">
+            </div>
+            <button class="ui primary button" type="submit">
+                Log in
+            </button>
+            <div class="ui pointing red basic label" id="failedLog" style="display: none">
+                Failed Log in
+            </div>
+        </form>
+    </div>
+
+</div>
+
+{{end}}
+{{define "scripts"}}
+<script type="text/javascript">
+</script>
+{{end}}

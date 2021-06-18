@@ -1,0 +1,59 @@
+{{define "head"}}
+<script src="/static/fetchData.js"></script>
+<script src="/static/buySellBot.js"></script>
+{{end}}
+
+{{define "title"}}
+Price control
+{{end}}
+
+{{define "body"}}
+<div class="center">
+    <div class="ui card">
+        <form class="ui form" id="Form" onsubmit="event.preventDefault(); changeSettings();">
+            <div class="field">
+                <label>pair</label>
+                <input type="text" name="pair" placeholder="BTC_SOMECOIN" value="BTC_">
+            </div>
+            <div class="field">
+                <label>type<br/>buy for buying all sell orders with price lower then said<br/>sell for opposite(sell will lower your price)</label>
+                <input type="text" name="type" placeholder="sell or buy">
+            </div>
+            <div class="field">
+                <label>price</label>
+                <input type="text" name="price" placeholder="float number" >
+            </div>
+            <div class="field">
+                <label>maximum amount to trade</label>
+                <input type="text" name="amount" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>maximum amount to trade per time</label>
+                <input type="text" name="maxamountpt" placeholder="float number">
+            </div>
+            <div class="field">
+                <label>minutes until reaching this price</label>
+                <input type="text" name="minutesUntilReaching" placeholder="int number">
+            </div>
+            <button class="ui primary button" type="submit" id="submitButton">
+                Run or Stop
+            </button>
+            <div class="ui pointing red basic label" id="failed" style="display: none">
+                Failed
+            </div>
+            <div class="ui pointing green basic label" id="success" style="display: none">
+                Successful
+            </div>
+            <pre id="status">
+                
+            </pre>
+        </form>
+    </div>
+
+</div>
+
+{{end}}
+{{define "scripts"}}
+<script type="text/javascript">
+</script>
+{{end}}

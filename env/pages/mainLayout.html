@@ -1,0 +1,41 @@
+{{define "mainLayout"}}
+<!doctype html>
+<html>
+<!-- manifest="/static/main.manifest" -->
+
+<head>
+    <meta charset="utf-8">
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="stylesheet" type="text/css" href="/static/semantic-2.2.13.css">
+    <script src="/static/jquery-3.3.1.js"></script>
+    <script src="/static/semantic-2.2.13.js"></script>
+    <script src="/static/particles-script.js"></script>
+
+    <link rel="icon" type="image/png" href="/static/favicon-64.png" />
+
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+    <script src="/static/testAuth.js"></script>
+
+    {{template "head"}}
+    <title>{{template "title" .}}</title>
+</head>
+
+<body>
+    <div id="particles-js" class="no_selection"></div>
+    <div class="content">
+        <br class="no_selection" /><br class="no_selection" />
+        <div class="ui huge header no_selection">{{template "title" .}} Gotbit.ru</div>
+        {{template "body" .}}
+    </div>
+    <!-- <img src="chart.svg" style="width: 100%;" /> -->
+
+    <script src="/static/particles.js"></script>
+
+    {{template "scripts"}}
+
+
+</body>
+
+</html>
+{{end}}

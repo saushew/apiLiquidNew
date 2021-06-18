@@ -1,0 +1,91 @@
+{{define "head"}}
+<script src="/static/fetchData.js"></script>
+<script src="/static/changeSettingsSpreadFill.js"></script>
+{{ end }}
+
+{{define "title"}}
+Change Settings
+{{ end }}
+
+{{define "body"}}
+<div class="center">
+  <div class="ui card">
+    <form
+      class="ui form"
+      id="Form"
+      onsubmit="event.preventDefault(); changeSettings();"
+    >
+      <div class="field">
+        <label>period1</label>
+        <input
+          type="text"
+          name="period1"
+          placeholder="float value of seconds"
+        />
+      </div>
+      <div class="field">
+        <label>pair</label>
+        <input type="text" name="pair" placeholder="BTC_COIN" />
+      </div>
+      <div class="field">
+        <label>enable or disable(true for enable)</label>
+        <input type="text" name="enabledPair" placeholder="true or false" />
+      </div>
+      <div class="field">
+        <label>maxPrice</label>
+        <input type="text" name="maxPrice" placeholder="float number" />
+      </div>
+      <div class="field">
+        <label>minPrice</label>
+        <input type="text" name="minPrice" placeholder="float number" />
+      </div>
+      <div class="field">
+        <label>minAmount</label>
+        <input type="text" name="minAmount" placeholder="float number" />
+      </div>
+      <div class="field">
+        <label>maxAmount</label>
+        <input type="text" name="maxAmount" placeholder="float number" />
+      </div>
+      <div class="field">
+        <label>sectorSize</label>
+        <input type="text" name="sectorSize" placeholder="float number" />
+      </div>
+      <div class="field">
+        <label>precisionAmount</label>
+        <input type="text" name="precisionAmount" placeholder="float number" />
+      </div>
+      <div class="field">
+        <label>notPlaceDiff</label>
+        <input type="text" name="notPlaceDiff" placeholder="float number" />
+      </div>
+      <div class="field">
+        <label>precisionPrice</label>
+        <input type="text" name="precisionPrice" placeholder="float number" />
+      </div>
+
+      <button class="ui primary button" type="submit" id="submitButton">
+        Change Settings
+      </button>
+      <div
+        class="ui pointing red basic label"
+        id="failed"
+        style="display: none"
+      >
+        Failed
+      </div>
+      <div
+        class="ui pointing green basic label"
+        id="success"
+        style="display: none"
+      >
+        Successful
+      </div>
+    </form>
+  </div>
+</div>
+
+{{ end }}
+{{define "scripts"}}
+<script type="text/javascript"></script>
+{{ end }}

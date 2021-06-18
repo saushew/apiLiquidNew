@@ -1,0 +1,31 @@
+CACHE MANIFEST
+#manifest ver = 9
+
+CACHE:
+/static/semantic-2.2.13.css
+/static/jquery-3.3.1.js
+/static/semantic-2.2.13.js
+/static/particles-script.js
+/static/favicon-64.png
+/static/favicon-128.png
+/static/favicon-512.png
+/static/style.css
+/static/testAuth.js
+/static/particles.js
+/
+/static/buy.js
+/static/auth.js
+/buyorder
+/authenticate
+/static/manifest.json
+https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin
+https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh6UVSwiPGQ.woff2
+https://fonts.gstatic.com/s/lato/v14/S6uyw4BMUTPHjx4wXg.woff2
+
+NETWORK:
+/static/mainscript.js
+*
+https://api.coinbase.com/v2/prices/spot?base=BTC&currency=RUB
+
+
+FALLBACK:
