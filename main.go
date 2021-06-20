@@ -33,16 +33,16 @@ func main() {
 
 	router.HandleFunc("/api/get_liquid_stats/{path}", controllers.GetStats).Methods("GET")
 
-	router.HandleFunc("/api/run_liquid/{path}", controllers.RunBot).Methods("GET")
+	router.HandleFunc("/api/run_liquid/{path}", controllers.RunBot_).Methods("POST")
 	router.HandleFunc("/api/check_liquid/{path}", controllers.CheckBot).Methods("GET")
 	router.HandleFunc("/api/stop_liquid/{path}", controllers.StopBot).Methods("GET")
-	router.HandleFunc("/api/create_liquid/{path}", controllers.CreateBot).Methods("POST")
+	// router.HandleFunc("/api/create_liquid/{path}", controllers.CreateBot).Methods("POST")
 
 	// router.Use(app.JwtAuthentication) //attach JWT auth middleware
 
 	port := os.Getenv("PORT") //Получить порт из файла .env; мы не указали порт, поэтому при локальном тестировании должна возвращаться пустая строка
 	if port == "" {
-		port = "2222" //localhost
+		port = "3333" //localhost
 	}
 
 	fmt.Println(port)

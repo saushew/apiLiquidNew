@@ -27,28 +27,28 @@ func GetLocalIP() string {
 func getRoot2() string {
 	ip := GetLocalIP()
 	fmt.Println("ip", ip)
-	// root := "/Users/roman/Desktop/liquid/liquidbot/"
-	root := "/Users/saushew/Roma/gotbitTraidingBot/liquid/liquidbot/"
+	// root := "/Users/roman/Desktop/newLiquid/liquidbot/"
+	root := "/Users/saushew/Roma/gotbitTraidingBot/newLiquid/liquidbot/"
 	if ip == "212.224.118.25" {
-		root = "/home/fil/liquid/liquidbot/"
+		root = "/home/fil/newLiquid/liquidbot/"
 	} else if ip == "212.224.118.141" {
-		root = "/home/fil/liquid/liquidbot/"
+		root = "/home/fil/newLiquid/liquidbot/"
 	} else if ip == "212.224.113.213" {
-		root = "/home/fil/liquid/liquidbot/"
+		root = "/home/fil/newLiquid/liquidbot/"
 	} else if ip == "5.187.1.249" {
-		root = "/home/roma/liquid/liquidbot/"
+		root = "/home/roma/newLiquid/liquidbot/"
 	} else if ip == "91.228.152.50" {
-		root = "/home/roma/liquid/liquidbot/"
+		root = "/home/roma/newLiquid/liquidbot/"
 	} else if ip == "91.228.153.40" {
-		root = "/home/roma/liquid/liquidbot/"
+		root = "/home/roma/newLiquid/liquidbot/"
 	} else if ip == "185.26.99.149" {
-		root = "/home/roma/liquid/liquidbot/"
+		root = "/home/roma/newLiquid/liquidbot/"
 	} else if ip == "185.26.98.97" {
-		root = "/home/roma/liquid/liquidbot/"
+		root = "/home/roma/newLiquid/liquidbot/"
 	} else if ip == "185.26.97.56" {
-		root = "/home/roma/liquid/liquidbot/"
+		root = "/home/roma/newLiquid/liquidbot/"
 	} else if ip == "185.26.97.54" {
-		root = "/home/roma/liquid/liquidbot/"
+		root = "/home/roma/newLiquid/liquidbot/"
 	}
 
 	fmt.Println("root2", root)
@@ -59,28 +59,28 @@ func getRoot2() string {
 func getRoot() string {
 	ip := GetLocalIP()
 	fmt.Println("ip", ip)
-	// root := "/Users/roman/Desktop/liquid/apiLiquid/"
-	root := "/Users/saushew/Roma/gotbitTraidingBot/liquid/apiLiquid/"
+	// root := "/Users/roman/Desktop/newLiquid/apiLiquid/"
+	root := "/Users/saushew/Roma/gotbitTraidingBot/newLiquid/apiLiquid/"
 	if ip == "212.224.118.25" {
-		root = "/home/fil/liquid/apiLiquid/"
+		root = "/home/fil/newLiquid/apiLiquid/"
 	} else if ip == "212.224.118.141" {
-		root = "/home/fil/liquid/apiLiquid/"
+		root = "/home/fil/newLiquid/apiLiquid/"
 	} else if ip == "212.224.113.213" {
-		root = "/home/fil/liquid/apiLiquid/"
+		root = "/home/fil/newLiquid/apiLiquid/"
 	} else if ip == "5.187.1.249" {
-		root = "/home/roma/liquid/apiLiquid/"
+		root = "/home/roma/newLiquid/apiLiquid/"
 	} else if ip == "91.228.152.50" {
-		root = "/home/roma/liquid/apiLiquid/"
+		root = "/home/roma/newLiquid/apiLiquid/"
 	} else if ip == "91.228.153.40" {
-		root = "/home/roma/liquid/apiLiquid/"
+		root = "/home/roma/newLiquid/apiLiquid/"
 	} else if ip == "185.26.99.149" {
-		root = "/home/roma/liquid/apiLiquid/"
+		root = "/home/roma/newLiquid/apiLiquid/"
 	} else if ip == "185.26.98.97" {
-		root = "/home/roma/liquid/apiLiquid/"
+		root = "/home/roma/newLiquid/apiLiquid/"
 	} else if ip == "185.26.97.56" {
-		root = "/home/roma/liquid/apiLiquid/"
+		root = "/home/roma/newLiquid/apiLiquid/"
 	} else if ip == "185.26.97.54" {
-		root = "/home/roma/liquid/apiLiquid/"
+		root = "/home/roma/newLiquid/apiLiquid/"
 	}
 
 	fmt.Println("root", root)
@@ -92,6 +92,20 @@ var root = getRoot()
 var root2 = getRoot2()
 
 func ReadJsonStats(path string, data *statStruct) error {
+	rawDataIn, err := ioutil.ReadFile(root2+path)
+	if err != nil {
+		return err
+	}
+
+	err = json.Unmarshal(rawDataIn, &data)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func ReadJsonOrders(path string, data *[]orderStruct) error {
 	rawDataIn, err := ioutil.ReadFile(root2+path)
 	if err != nil {
 		return err

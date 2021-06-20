@@ -20,12 +20,9 @@ const FileNameSettingsInfo = "settings_info.json"
 const FileNameSettings = "settings.json"
 
 type SettingsInfo struct {
+	Account     string  `json:"account"`
 	Profit      float64 `json:"profit"`
-	PeriodCheck int     `json:"periodCheck"`
 	Amount      float64 `json:"amount"`
-	MinPrice    float64 `json:"minPrice"`
-	MaxPrice    float64 `json:"maxPrice"`
-	OrderNum    int     `json:"orderNumber"`
 }
 
 var GetSettingsInfo = func(w http.ResponseWriter, r *http.Request) {
@@ -207,6 +204,80 @@ var CreateBot = func(w http.ResponseWriter, r *http.Request) {
 	defer file.Close()
 
 	file.WriteString(data.String())
+
+	u.Respond(w, u.Message(false, "success"))
+}
+
+var RunBot_ = func(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(" request", "/api/run_liquid/{path}")
+
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r)
+
+	path := "../liquidbot/local/" + strings.Split(params["path"], "_")[2] + "/" + strings.ToLower(params["path"]) + "/"
+
+	if _, err := os.Stat(path); !os.IsNotExist(err) {
+
+		src, _ := ioutil.ReadAll(r.Body)
+		data := &bytes.Buffer{}
+		json.Indent(data, src, "", "  ")
+
+		err := ioutil.WriteFile(path+FileNameSettings, data.Bytes(), 0777)
+		if err != nil {
+			fmt.Println(err)
+		}
+
+	} else {
+
+		err := os.MkdirAll(path, 0777)
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		file, err := os.Create(path + FileNameSettings)
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		src, _ := ioutil.ReadAll(r.Body)
+		data := &bytes.Buffer{}
+		json.Indent(data, src, "", "  ")
+
+		file.WriteString(data.String())
+
+		file.Close()
+	}
+
+	fmt.Println(path)
+
+	cmd := &exec.Cmd{
+		Path: "./launch.sh",
+		Dir:  root,
+		Args: []string{"./launch.sh", path},
+	}
+
+	// run command
+	go func() {
+		if output, err := cmd.Output(); err != nil {
+			fmt.Println(err.Error())
+			u.Respond(w, u.Message(true, "Error: "+err.Error()))
+			return
+		} else {
+			fmt.Println(string(output))
+		}
+	}()
+
+	client, err := runRedis()
+	if err != nil {
+		u.Respond(w, u.Message(true, "Error in runRedis"+"   Error: "+err.Error()))
+		return
+	}
+
+	err = RedisSet(client, "settings_liquid_edit_"+params["path"], "false")
+	if err != nil {
+		u.Respond(w, u.Message(true, "Error in RedisSet path with this path: "+params["path"]+"   Error: "+err.Error()))
+		return
+	}
 
 	u.Respond(w, u.Message(false, "success"))
 }
